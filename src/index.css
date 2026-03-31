@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 153 32% 14%;
+    --foreground: 43 52% 68%;
+    --card: 153 32% 16%;
+    --card-foreground: 43 52% 68%;
+    --popover: 153 32% 14%;
+    --popover-foreground: 43 52% 68%;
+    --primary: 43 52% 58%;
+    --primary-foreground: 153 32% 10%;
+    --secondary: 153 28% 20%;
+    --secondary-foreground: 43 52% 68%;
+    --muted: 153 25% 22%;
+    --muted-foreground: 43 30% 50%;
+    --accent: 43 52% 53%;
+    --accent-foreground: 153 32% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 43 52% 68%;
+    --input: 153 25% 22%;
+    --ring: 43 52% 53%;
+    --radius: 0.5rem;
+
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Instrument Sans', sans-serif;
+
+    --shadow-elegant: 0 0 0 1px rgba(181,149,72,.1), 0 2px 4px rgba(0,0,0,.15), 0 12px 24px rgba(0,0,0,.2);
+    --transition-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border/15;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+  .text-label {
+    @apply text-xs uppercase tracking-[0.12em] font-normal;
+    font-family: var(--font-sans);
+  }
+  .text-display {
+    font-family: var(--font-serif);
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+  .text-body {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+}
