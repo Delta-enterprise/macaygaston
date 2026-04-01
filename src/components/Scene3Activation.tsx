@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useAudio } from "@/hooks/useAudio";
 
 const transition = { duration: 0.8, ease: [0.65, 0, 0.35, 1] as const };
 
@@ -8,10 +9,10 @@ const DECAY_RATE = 8;
 const DECAY_INTERVAL = 50;
 
 function tapGain(progress: number): number {
-  if (progress < 30) return 6;
-  if (progress < 60) return 3.5;
-  if (progress < 85) return 2;
-  return 1.2;
+  if (progress < 30) return 10;
+  if (progress < 60) return 6;
+  if (progress < 85) return 3.5;
+  return 2;
 }
 
 interface Props {
@@ -277,6 +278,7 @@ export default function Scene3Activation({ onComplete }: Props) {
   const progressRef = useRef(0);
   const completedRef = useRef(false);
   const lastTapRef = useRef(0);
+  const { playWin } = useAudio();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -304,6 +306,7 @@ export default function Scene3Activation({ onComplete }: Props) {
     if (newP >= MAX_PROGRESS) {
       completedRef.current = true;
       setPopped(true);
+      playWin();
       setTimeout(() => {
         setComplete(true);
         setTimeout(onComplete, 1500);
